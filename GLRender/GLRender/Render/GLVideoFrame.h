@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GLYUVPlanarBuffer.h"
+@import CoreVideo;
 
 typedef enum : NSUInteger {
     GLRotation0,
@@ -13,6 +15,11 @@ typedef enum : NSUInteger {
     GLRotation180,
     GLRotation270
 } GLRotation;
+
+typedef enum : NSUInteger {
+    GLVideoFrameTypeRawYUV,
+    GLVideoFrameTypePixelBuffer
+} GLVideoFrameType;
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -23,8 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) int height;
 @property (nonatomic, readonly) GLRotation rotation;
 
+@property (nonatomic, readonly) GLVideoFrameType videoFrameType;
+@property (nonatomic, readonly) CVPixelBufferRef pixelBuffer;
+@property (nonatomic, readonly) GLYUVPlanarBuffer * yuvPlanarBuffer;
 
+- (instancetype)initWithPixelBuffer:(CVPixelBufferRef)pixelBuffer rotation:(GLRotation)rotation;
 
+- (instancetype)initWithYUVPlanarBuffer:(GLYUVPlanarBuffer *)yuvPlanarBuffer rotation:(GLRotation)rotation;
 
 @end
 

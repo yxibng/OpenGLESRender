@@ -6,11 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@import GLKit;
+#import "GLVideoFrame.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-//AVLayerVideoGravityResize, AVLayerVideoGravityResizeAspect and AVLayerVideoGravityResizeAspectFill. AVLayerVideoGravityResizeAspect
 
 typedef enum : NSUInteger {
     //Stretch to fill view bounds
@@ -21,14 +19,12 @@ typedef enum : NSUInteger {
     GLVideoGravityResizeAspectFill,
 } GLVideoGravity;
 
-
-
-
-
-@interface GLRenderView : GLKView
+@interface GLRenderView : UIView
 
 @property (nonatomic, assign) GLVideoGravity videoGravity;
 @property (nonatomic, assign) BOOL mirrored;
+
+- (void)renderVideoFrame:(GLVideoFrame *)videoFrame;
 
 @end
 

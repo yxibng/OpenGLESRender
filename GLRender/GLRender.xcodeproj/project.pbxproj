@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		868F75792B0B0D4500B95169 /* GLBaseEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F75782B0B0D4500B95169 /* GLBaseEffect.m */; };
+		868F757C2B0B499F00B95169 /* GLNV12Render.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F757B2B0B499F00B95169 /* GLNV12Render.m */; };
+		868F75802B0B62C700B95169 /* NV12Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F757E2B0B62C700B95169 /* NV12Fragment.glsl */; };
+		868F75812B0B62C700B95169 /* NV12Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F757F2B0B62C700B95169 /* NV12Vertex.glsl */; };
+		868F75842B0B632200B95169 /* I420Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F75822B0B632200B95169 /* I420Fragment.glsl */; };
+		868F75852B0B632200B95169 /* I420Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F75832B0B632200B95169 /* I420Vertex.glsl */; };
+		868F75882B0B7C4500B95169 /* GLShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 868F75872B0B7C4500B95169 /* GLShader.mm */; };
 		869D1E4A2B07574900582F06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E492B07574900582F06 /* AppDelegate.swift */; };
 		869D1E4C2B07574900582F06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E4B2B07574900582F06 /* SceneDelegate.swift */; };
 		869D1E4E2B07574900582F06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E4D2B07574900582F06 /* ViewController.swift */; };
@@ -22,6 +29,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		868F75772B0B0D4500B95169 /* GLBaseEffect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBaseEffect.h; sourceTree = "<group>"; };
+		868F75782B0B0D4500B95169 /* GLBaseEffect.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLBaseEffect.m; sourceTree = "<group>"; };
+		868F757A2B0B499F00B95169 /* GLNV12Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLNV12Render.h; sourceTree = "<group>"; };
+		868F757B2B0B499F00B95169 /* GLNV12Render.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLNV12Render.m; sourceTree = "<group>"; };
+		868F757E2B0B62C700B95169 /* NV12Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NV12Fragment.glsl; sourceTree = "<group>"; };
+		868F757F2B0B62C700B95169 /* NV12Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = NV12Vertex.glsl; sourceTree = "<group>"; };
+		868F75822B0B632200B95169 /* I420Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = I420Fragment.glsl; sourceTree = "<group>"; };
+		868F75832B0B632200B95169 /* I420Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = I420Vertex.glsl; sourceTree = "<group>"; };
+		868F75862B0B7C4500B95169 /* GLShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
+		868F75872B0B7C4500B95169 /* GLShader.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GLShader.mm; sourceTree = "<group>"; };
 		869D1E462B07574900582F06 /* GLRender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLRender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869D1E492B07574900582F06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869D1E4B2B07574900582F06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +72,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		868F757D2B0B4A2C00B95169 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				868F75822B0B632200B95169 /* I420Fragment.glsl */,
+				868F75832B0B632200B95169 /* I420Vertex.glsl */,
+				868F757E2B0B62C700B95169 /* NV12Fragment.glsl */,
+				868F757F2B0B62C700B95169 /* NV12Vertex.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
 		869D1E3D2B07574900582F06 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +119,7 @@
 		869D1E5F2B075A2700582F06 /* Render */ = {
 			isa = PBXGroup;
 			children = (
+				868F757D2B0B4A2C00B95169 /* shaders */,
 				869D1E612B075A9E00582F06 /* GLRenderView.h */,
 				869D1E622B075A9E00582F06 /* GLRenderView.m */,
 				869D1E602B075A9E00582F06 /* GLRender-Bridging-Header.h */,
@@ -98,6 +127,12 @@
 				869D1E6A2B07625700582F06 /* GLVideoFrame.m */,
 				869D1E6C2B0764FF00582F06 /* GLYUVPlanarBuffer.h */,
 				869D1E6D2B0764FF00582F06 /* GLYUVPlanarBuffer.m */,
+				868F75772B0B0D4500B95169 /* GLBaseEffect.h */,
+				868F75782B0B0D4500B95169 /* GLBaseEffect.m */,
+				868F757A2B0B499F00B95169 /* GLNV12Render.h */,
+				868F757B2B0B499F00B95169 /* GLNV12Render.m */,
+				868F75862B0B7C4500B95169 /* GLShader.h */,
+				868F75872B0B7C4500B95169 /* GLShader.mm */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -170,8 +205,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				868F75852B0B632200B95169 /* I420Vertex.glsl in Resources */,
 				869D1E562B07574B00582F06 /* LaunchScreen.storyboard in Resources */,
+				868F75802B0B62C700B95169 /* NV12Fragment.glsl in Resources */,
 				869D1E532B07574B00582F06 /* Assets.xcassets in Resources */,
+				868F75812B0B62C700B95169 /* NV12Vertex.glsl in Resources */,
+				868F75842B0B632200B95169 /* I420Fragment.glsl in Resources */,
 				869D1E512B07574900582F06 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,9 +223,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				869D1E6B2B07625700582F06 /* GLVideoFrame.m in Sources */,
+				868F75882B0B7C4500B95169 /* GLShader.mm in Sources */,
 				869D1E632B075A9E00582F06 /* GLRenderView.m in Sources */,
+				868F757C2B0B499F00B95169 /* GLNV12Render.m in Sources */,
 				869D1E6E2B0764FF00582F06 /* GLYUVPlanarBuffer.m in Sources */,
 				869D1E5E2B075A0A00582F06 /* CameraFeedService.swift in Sources */,
+				868F75792B0B0D4500B95169 /* GLBaseEffect.m in Sources */,
 				869D1E4E2B07574900582F06 /* ViewController.swift in Sources */,
 				869D1E4A2B07574900582F06 /* AppDelegate.swift in Sources */,
 				869D1E4C2B07574900582F06 /* SceneDelegate.swift in Sources */,
@@ -343,6 +385,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X76N6QQX9B;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GLRender/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -375,6 +418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X76N6QQX9B;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GLRender/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -14,6 +14,8 @@
 		868F75842B0B632200B95169 /* I420Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F75822B0B632200B95169 /* I420Fragment.glsl */; };
 		868F75852B0B632200B95169 /* I420Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = 868F75832B0B632200B95169 /* I420Vertex.glsl */; };
 		868F75882B0B7C4500B95169 /* GLShader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 868F75872B0B7C4500B95169 /* GLShader.mm */; };
+		868F758C2B0C5D6F00B95169 /* GLNV12TextureCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 868F758B2B0C5D6F00B95169 /* GLNV12TextureCache.m */; };
+		868F758F2B0C5D8400B95169 /* GLI420TextureCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 868F758E2B0C5D8400B95169 /* GLI420TextureCache.mm */; };
 		869D1E4A2B07574900582F06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E492B07574900582F06 /* AppDelegate.swift */; };
 		869D1E4C2B07574900582F06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E4B2B07574900582F06 /* SceneDelegate.swift */; };
 		869D1E4E2B07574900582F06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869D1E4D2B07574900582F06 /* ViewController.swift */; };
@@ -39,6 +41,11 @@
 		868F75832B0B632200B95169 /* I420Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = I420Vertex.glsl; sourceTree = "<group>"; };
 		868F75862B0B7C4500B95169 /* GLShader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLShader.h; sourceTree = "<group>"; };
 		868F75872B0B7C4500B95169 /* GLShader.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GLShader.mm; sourceTree = "<group>"; };
+		868F75892B0C4B3500B95169 /* GLDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLDefines.h; sourceTree = "<group>"; };
+		868F758A2B0C5D6F00B95169 /* GLNV12TextureCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLNV12TextureCache.h; sourceTree = "<group>"; };
+		868F758B2B0C5D6F00B95169 /* GLNV12TextureCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLNV12TextureCache.m; sourceTree = "<group>"; };
+		868F758D2B0C5D8400B95169 /* GLI420TextureCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLI420TextureCache.h; sourceTree = "<group>"; };
+		868F758E2B0C5D8400B95169 /* GLI420TextureCache.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GLI420TextureCache.mm; sourceTree = "<group>"; };
 		869D1E462B07574900582F06 /* GLRender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLRender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		869D1E492B07574900582F06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		869D1E4B2B07574900582F06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +140,11 @@
 				868F757B2B0B499F00B95169 /* GLNV12Render.m */,
 				868F75862B0B7C4500B95169 /* GLShader.h */,
 				868F75872B0B7C4500B95169 /* GLShader.mm */,
+				868F75892B0C4B3500B95169 /* GLDefines.h */,
+				868F758A2B0C5D6F00B95169 /* GLNV12TextureCache.h */,
+				868F758B2B0C5D6F00B95169 /* GLNV12TextureCache.m */,
+				868F758D2B0C5D8400B95169 /* GLI420TextureCache.h */,
+				868F758E2B0C5D8400B95169 /* GLI420TextureCache.mm */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -225,12 +237,14 @@
 				869D1E6B2B07625700582F06 /* GLVideoFrame.m in Sources */,
 				868F75882B0B7C4500B95169 /* GLShader.mm in Sources */,
 				869D1E632B075A9E00582F06 /* GLRenderView.m in Sources */,
+				868F758C2B0C5D6F00B95169 /* GLNV12TextureCache.m in Sources */,
 				868F757C2B0B499F00B95169 /* GLNV12Render.m in Sources */,
 				869D1E6E2B0764FF00582F06 /* GLYUVPlanarBuffer.m in Sources */,
 				869D1E5E2B075A0A00582F06 /* CameraFeedService.swift in Sources */,
 				868F75792B0B0D4500B95169 /* GLBaseEffect.m in Sources */,
 				869D1E4E2B07574900582F06 /* ViewController.swift in Sources */,
 				869D1E4A2B07574900582F06 /* AppDelegate.swift in Sources */,
+				868F758F2B0C5D8400B95169 /* GLI420TextureCache.mm in Sources */,
 				869D1E4C2B07574900582F06 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

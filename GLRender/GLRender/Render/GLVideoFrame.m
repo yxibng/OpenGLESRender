@@ -11,7 +11,7 @@
 
 @property (nonatomic) int width;
 @property (nonatomic) int height;
-@property (nonatomic) GLRotation rotation;
+@property (nonatomic) GLVideoRotation rotation;
 
 @property (nonatomic) GLVideoFrameType videoFrameType;
 @property (nonatomic) CVPixelBufferRef pixelBuffer;
@@ -25,7 +25,7 @@
     if (_pixelBuffer) CVPixelBufferRelease(_pixelBuffer);
 }
 
-- (instancetype)initWithPixelBuffer:(CVPixelBufferRef)pixelBuffer rotation:(GLRotation)rotation {
+- (instancetype)initWithPixelBuffer:(CVPixelBufferRef)pixelBuffer rotation:(GLVideoRotation)rotation {
     if (self = [super init]) {
         _pixelBuffer = CVBufferRetain(pixelBuffer);
         _width = (int)CVPixelBufferGetWidth(pixelBuffer);
@@ -37,7 +37,7 @@
     
 }
 
-- (instancetype)initWithYUVPlanarBuffer:(GLYUVPlanarBuffer *)yuvPlanarBuffer rotation:(GLRotation)rotation {
+- (instancetype)initWithYUVPlanarBuffer:(GLYUVPlanarBuffer *)yuvPlanarBuffer rotation:(GLVideoRotation)rotation {
     if (self = [super init]) {
         _yuvPlanarBuffer = yuvPlanarBuffer;
         _width = yuvPlanarBuffer.width;

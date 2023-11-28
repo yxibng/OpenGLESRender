@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithContext:(EAGLContext *)context NS_DESIGNATED_INITIALIZER;
 - (void)uploadFrameToTextures:(GLVideoFrame*)frame;
+- (void)releaseTextures;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) GLVideoRotation rotation;
 
 @property (nonatomic, readonly) GLVideoFrameType videoFrameType;
+@property (nonatomic, readonly) GLYUVType yuvType;
 @property (nonatomic, readonly) CVPixelBufferRef pixelBuffer;
 @property (nonatomic, readonly) GLYUVPlanarBuffer * yuvPlanarBuffer;
 

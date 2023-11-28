@@ -32,6 +32,13 @@
         _height = (int)CVPixelBufferGetHeight(pixelBuffer);
         _videoFrameType = GLVideoFrameTypePixelBuffer;
         _rotation = rotation;
+        if (CVPixelBufferGetPlaneCount(pixelBuffer) == 2) {
+            _yuvType = GLYUVTypeNV12;
+        } else if (CVPixelBufferGetPlaneCount(pixelBuffer) == 3) {
+            _yuvType = GLYUVTypeI420;
+        } else {
+            NSAssert(NO, @"Not support!");
+        }
     }
     return self;
     
@@ -44,6 +51,7 @@
         _height = yuvPlanarBuffer.height;
         _videoFrameType = GLVideoFrameTypeRawYUV;
         _rotation = rotation;
+        _yuvType = yuvPlanarBuffer.yuvType;
     }
     return self;
 }

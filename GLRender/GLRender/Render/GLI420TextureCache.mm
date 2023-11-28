@@ -181,6 +181,8 @@ static const GLsizei kNumTextures = kNumTexturesPerSet * kNumTextureSets;
 }
 
 
-
+- (void)releaseTextures {
+    
+}
 
 @end

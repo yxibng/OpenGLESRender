@@ -1,6 +1,7 @@
 // Fragment shader converts YUV values from input textures into a final RGB
 // pixel. The conversion formula is from http://www.fourcc.org/fccyvrgb.php.
 
+precision mediump float;
 varying vec2 v_texcoord;
 uniform lowp sampler2D s_textureY;
 uniform lowp sampler2D s_textureUV;

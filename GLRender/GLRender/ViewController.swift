@@ -31,11 +31,28 @@ class ViewController: UIViewController {
 }
 
 
+
+
 extension ViewController : CameraFeedServiceDelegate {
     func didOutput(sampleBuffer: CMSampleBuffer, orientation: UIImage.Orientation) {
         
+        func toGLVideoRotation(orientation: UIImage.Orientation) -> GLVideoRotation {
+            switch orientation {
+            case .up, .upMirrored:
+                return GLVideoRotation0
+            case .down, .downMirrored:
+                return GLVideoRotation180
+            case .left, .leftMirrored:
+                return GLVideoRotation270
+            case .right, .rightMirrored:
+                return GLVideoRotation90
+            @unknown default:
+                return GLVideoRotation0
+            }
+        }
+        
         guard let pixelBuffer = sampleBuffer.imageBuffer else { return  }
-        let videoFrame = GLVideoFrame.init(pixelBuffer: pixelBuffer, rotation: GLVideoRotation0)
+        let videoFrame = GLVideoFrame.init(pixelBuffer: pixelBuffer, rotation: toGLVideoRotation(orientation: orientation))
         DispatchQueue.main.async {
             self.renderView .renderVideoFrame(videoFrame)
         }

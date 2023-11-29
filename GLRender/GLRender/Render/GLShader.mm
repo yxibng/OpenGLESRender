@@ -236,10 +236,12 @@ void GLSetVertexData(GLVideoRotation rotation) {
     GLuint _vertexBuffer;
     GLuint _vertexArray;
     GLVideoRotation _currentRotation;
+    BOOL _rotationSetted;
     
     GLuint _i420Program;
     GLuint _nv12Program;
 }
+
 
 - (void)dealloc {
     glDeleteProgram(_i420Program);
@@ -306,7 +308,8 @@ void GLSetVertexData(GLVideoRotation rotation) {
     
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     
-    if (_currentRotation != rotation) {
+    if (!_rotationSetted || _currentRotation != rotation) {
+        _rotationSetted = YES;
         _currentRotation = rotation;
         GLSetVertexData(rotation);
     }

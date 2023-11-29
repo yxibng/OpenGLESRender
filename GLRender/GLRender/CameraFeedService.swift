@@ -78,10 +78,27 @@ class CameraFeedService: NSObject {
 
   // MARK: Instance Variables
   private let session: AVCaptureSession = AVCaptureSession()
-  private lazy var videoPreviewLayer = AVCaptureVideoPreviewLayer(session: session)
+    
+    class Preview: UIView {
+        override class var layerClass: AnyClass {
+            return AVCaptureVideoPreviewLayer.self
+        }
+        func setSession(_ session: AVCaptureSession) {
+            guard let layer = self.layer as? AVCaptureVideoPreviewLayer else { return }
+            layer.session = session
+        }
+        
+        var displayLayer: AVCaptureVideoPreviewLayer {
+            guard let layer = self.layer as? AVCaptureVideoPreviewLayer else { return AVCaptureVideoPreviewLayer.init() }
+            return layer
+        }
+        
+    }
+    
+    
   private let sessionQueue = DispatchQueue(label: "com.google.mediapipe.CameraFeedService.sessionQueue")
   private let cameraPosition: AVCaptureDevice.Position = .front
-
+    private let previewView: Preview = Preview.init()
   private var cameraConfigurationStatus: CameraConfigurationStatus = .failed
   private lazy var videoDataOutput = AVCaptureVideoDataOutput()
   private var isSessionRunning = false
@@ -110,21 +127,24 @@ class CameraFeedService: NSObject {
     NotificationCenter.default.removeObserver(self)
   }
 
-  private func setUpPreviewView(_ view: UIView) {
-    videoPreviewLayer.videoGravity = videoGravity
-    videoPreviewLayer.connection?.videoOrientation = .portrait
-    view.layer.addSublayer(videoPreviewLayer)
-  }
+    private func setUpPreviewView(_ view: UIView) {
+        self.previewView.displayLayer.videoGravity = videoGravity
+        self.previewView.displayLayer.connection?.videoOrientation = .portrait
+        view.addSubview(previewView)
+        previewView.frame = view.bounds
+        previewView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        previewView.setSession(session)
+    }
 
   // MARK: notification methods
   @objc func orientationChanged(notification: Notification) {
     switch UIImage.Orientation.from(deviceOrientation: UIDevice.current.orientation) {
     case .up:
-      videoPreviewLayer.connection?.videoOrientation = .portrait
+        self.previewView.displayLayer.connection?.videoOrientation = .portrait
     case .left:
-      videoPreviewLayer.connection?.videoOrientation = .landscapeRight
+        self.previewView.displayLayer.connection?.videoOrientation = .landscapeRight
     case .right:
-      videoPreviewLayer.connection?.videoOrientation = .landscapeLeft
+        self.previewView.displayLayer.connection?.videoOrientation = .landscapeLeft
     default:
       break
     }
@@ -175,11 +195,6 @@ class CameraFeedService: NSObject {
       }
     }
   }
-
-  func updateVideoPreviewLayer(toFrame frame: CGRect) {
-    videoPreviewLayer.frame = frame
-  }
-
   /**
    This method starts the AVCaptureSession
    **/

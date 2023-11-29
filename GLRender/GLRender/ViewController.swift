@@ -12,8 +12,9 @@ class ViewController: UIViewController {
 
     
 
+    @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var renderView: GLRenderView!
-    lazy var  camService = CameraFeedService.init(previewView: self.view)
+    lazy var  camService = CameraFeedService.init(previewView: self.previewView)
     
     
     override func viewDidLoad() {
@@ -23,8 +24,7 @@ class ViewController: UIViewController {
             print(cameraConfiguration)
         }
         
-        camService.delegate = self
-        
+        camService.delegate = self        
     }
 
 

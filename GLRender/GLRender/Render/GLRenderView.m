@@ -139,6 +139,12 @@
     
     GLVideoFrame *videoFrame = self.videoFrame;
     if (!videoFrame) return;
+
+    if (videoFrame.rotation == GLVideoRotation0 || videoFrame.rotation == GLVideoRotation180) {
+        glViewport(0, 0, videoFrame.width, videoFrame.height);
+    } else {
+        glViewport(0, 0, videoFrame.height, videoFrame.width);
+    }
     
     GLYUVType yuvType = videoFrame.yuvType;
     if (yuvType == GLYUVTypeI420) {

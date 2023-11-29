@@ -18,20 +18,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NYD-3J-NJZ" customClass="GLRenderView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="392" width="393" height="426"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xd0-p4-Sde">
+                                <rect key="frame" x="0.0" y="59" width="393" height="333"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Xd0-p4-Sde" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="M56-rm-vSP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xd0-p4-Sde" secondAttribute="trailing" id="QEP-DP-YtX"/>
+                            <constraint firstItem="NYD-3J-NJZ" firstAttribute="top" secondItem="Xd0-p4-Sde" secondAttribute="bottom" id="QNQ-LR-z4x"/>
                             <constraint firstItem="NYD-3J-NJZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a5O-OW-Dkg"/>
+                            <constraint firstItem="Xd0-p4-Sde" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gnQ-0k-f1s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NYD-3J-NJZ" secondAttribute="bottom" id="rCc-8a-E7P"/>
-                            <constraint firstItem="NYD-3J-NJZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xev-fo-Exg"/>
+                            <constraint firstItem="NYD-3J-NJZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="w0f-Y0-hiR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NYD-3J-NJZ" secondAttribute="trailing" id="zzB-HL-9ev"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="previewView" destination="Xd0-p4-Sde" id="JQ5-tB-8xu"/>
                         <outlet property="renderView" destination="NYD-3J-NJZ" id="MhE-29-d3Z"/>
                     </connections>
                 </viewController>
@@ -45,7 +54,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

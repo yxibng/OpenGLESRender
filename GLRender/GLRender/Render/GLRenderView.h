@@ -10,15 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum : NSUInteger {
-    //Stretch to fill view bounds
-    GLVideoGravityResize,
-    //Preserve aspect ratio; fit within view bounds
-    GLVideoGravityResizeAspect,
-    //Preserve aspect ratio; fill view bounds.
-    GLVideoGravityResizeAspectFill,
-} GLVideoGravity;
-
 @interface GLRenderView : UIView
 
 @property (nonatomic, assign) GLVideoGravity videoGravity;

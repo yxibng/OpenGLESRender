@@ -24,7 +24,8 @@ class ViewController: UIViewController {
             print(cameraConfiguration)
         }
         
-        camService.delegate = self        
+        camService.delegate = self   
+        renderView.videoGravity = GLVideoGravityResizeAspect
     }
 
 

@@ -24,6 +24,9 @@ FOUNDATION_EXTERN void GLSetVertexData(GLVideoRotation rotation);
 
 @interface GLShader : NSObject
 
+@property (nonatomic, assign) CGSize drawSize;
+@property (nonatomic, assign) GLVideoGravity videoGravity;
+
 /** Callback for I420 frames. Each plane is given as a texture. */
 - (void)applyShadingForFrameWithWidth:(int)width
                                height:(int)height
@@ -38,7 +41,6 @@ FOUNDATION_EXTERN void GLSetVertexData(GLVideoRotation rotation);
                              rotation:(GLVideoRotation)rotation
                                yPlane:(GLuint)yPlane
                               uvPlane:(GLuint)uvPlane;
-
 
 @end
 

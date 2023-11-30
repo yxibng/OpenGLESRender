@@ -19,6 +19,7 @@ static const int kVTextureUnit = 2;
 static const int kUvTextureUnit = 1;
 
 
+
 // Compiles a shader of the given `type` with GLSL source `source` and returns
 // the shader handle or 0 on error.
 GLuint GLCreateShader(GLenum type, const GLchar *source) {
@@ -226,8 +227,7 @@ void GLSetVertexData(GLVideoRotation rotation) {
         1, -1, UVCoords[1][0], UVCoords[1][1],
         1,  1, UVCoords[2][0], UVCoords[2][1],
         -1,  1, UVCoords[3][0], UVCoords[3][1],
-    };
-    
+    };    
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(gVertices), gVertices);
 }
 
@@ -313,9 +313,9 @@ void GLSetVertexData(GLVideoRotation rotation) {
         _currentRotation = rotation;
         GLSetVertexData(rotation);
     }
-    
     return YES;
 }
+
 
 - (void)applyShadingForFrameWithWidth:(int)width
                                height:(int)height
@@ -360,6 +360,40 @@ void GLSetVertexData(GLVideoRotation rotation) {
         return;
     }
     
+    
+    //https://stackoverflow.com/questions/62821286/aspect-fit-and-aspect-fill-content-mode-with-opengl-es-2-0/62821532#62821532
+    float textureAspect = (float)width / (float)height;
+    if (rotation == GLVideoRotation90 || rotation == GLVideoRotation270) {
+        textureAspect = (float)height / (float)width;
+    }
+    float frameAspect = (float)self.drawSize.width / (float)self.drawSize.height;
+    float scaleX = 1, scaleY = 1;
+    float textureFrameRatio = textureAspect / frameAspect;
+    BOOL portraitFrame = frameAspect < 1;
+    if (self.videoGravity == GLVideoGravityResizeAspect) {
+        //aspect fit
+        if(portraitFrame)
+            scaleY = textureFrameRatio;
+        else
+            scaleX = 1.f / textureFrameRatio;
+        
+    } else if (self.videoGravity ==GLVideoGravityResizeAspectFill) {
+        // aspect fill
+        if(portraitFrame)
+            scaleX = 1.f / textureFrameRatio;
+        else
+            scaleY = textureFrameRatio;
+    }
+
+    //set uniform variable
+    GLint scaleUniformLocation  = glGetUniformLocation(_nv12Program, "textureScale");
+    GLfloat data[] = {scaleX, scaleY}; // Replace with your data
+    glUniform2fv(scaleUniformLocation, 1, data);
+    
+    GLint rotationLocation  = glGetUniformLocation(_nv12Program, "rotation");
+    GLint glRotation = (GLint)rotation;
+    glUniform1i(rotationLocation, glRotation);
+
     glUseProgram(_nv12Program);
     
     glActiveTexture(static_cast<GLenum>(GL_TEXTURE0 + kYTextureUnit));

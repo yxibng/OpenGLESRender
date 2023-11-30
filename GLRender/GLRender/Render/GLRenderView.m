@@ -136,16 +136,53 @@
 
 #pragma mark - GLKViewDelegate
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+
+    _shader.drawSize = rect.size;
+    _shader.videoGravity = self.videoGravity;
     
     GLVideoFrame *videoFrame = self.videoFrame;
     if (!videoFrame) return;
-
-    if (videoFrame.rotation == GLVideoRotation0 || videoFrame.rotation == GLVideoRotation180) {
-        glViewport(0, 0, videoFrame.width, videoFrame.height);
-    } else {
-        glViewport(0, 0, videoFrame.height, videoFrame.width);
-    }
     
+//    GLsizei drawableWidth = (GLsizei)view.drawableWidth;
+//    GLsizei drawableHeight = (GLsizei)view.drawableHeight;
+//    
+//    CGFloat frameWidth = videoFrame.width;
+//    CGFloat frameHeight = videoFrame.height;
+//    
+//    if (videoFrame.rotation == GLVideoRotation90 || videoFrame.rotation == GLVideoRotation270) {
+//        frameWidth = videoFrame.height;
+//        frameHeight = videoFrame.width;
+//    }
+//    
+//    CGFloat viewRatio = (CGFloat)drawableWidth / (CGFloat)drawableHeight;
+//    CGFloat frameRatio = (CGFloat)videoFrame.width / (CGFloat)videoFrame.height;
+//    
+//    if (self.videoGravity == GLVideoGravityResize) {
+//        glViewport(0, 0, drawableWidth, drawableHeight);
+//    } else if (self.videoGravity == GLVideoGravityResizeAspect) {
+//        if (frameRatio > viewRatio) {
+//            CGFloat targetHeight = drawableWidth / frameRatio;
+//            CGFloat offsetY = (drawableHeight - targetHeight) / 2.0;
+//            glViewport(0, offsetY, drawableWidth, targetHeight);
+//        } else {
+//            CGFloat targetWidth = drawableHeight * frameRatio;
+//            CGFloat offsetX = (drawableWidth - targetWidth) / 2.0;
+//            glViewport(offsetX, 0, targetWidth, drawableHeight);
+//        }
+//    } else {
+//        if (frameRatio > viewRatio) {
+//            CGFloat targetWidth = drawableHeight * frameRatio;
+//            CGFloat offsetX = (drawableWidth - targetWidth) / 2.0;
+//            glViewport(offsetX, 0, targetWidth, drawableHeight);
+//        } else {
+//            CGFloat targetHeight = drawableWidth / frameRatio;
+//            CGFloat offsetY = (drawableHeight - targetHeight) / 2.0;
+//            glViewport(0, offsetY, drawableWidth, targetHeight);
+//        }
+//    }
+    
+    
+
     GLYUVType yuvType = videoFrame.yuvType;
     if (yuvType == GLYUVTypeI420) {
         if (!_i420TextureCache) {

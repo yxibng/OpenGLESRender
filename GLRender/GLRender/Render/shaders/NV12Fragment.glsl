@@ -7,6 +7,12 @@ uniform lowp sampler2D s_textureY;
 uniform lowp sampler2D s_textureUV;
 
 void main() {
+    
+    if (v_texcoord.x < 0.0 || v_texcoord.x > 1.0 ||
+        v_texcoord.y < 0.0 || v_texcoord.y > 1.0) {
+        discard;
+    }
+    
     mediump float y;
     mediump vec2 uv;
     y = texture2D(s_textureY, v_texcoord).r;
